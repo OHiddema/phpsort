@@ -1,7 +1,11 @@
 <?php
 
-function getAvgVal($str) {
+function getAvgVal($str, $line) {
    $pos = strpos($str,'-');
+   if (!$pos) {
+      $error = "- is missing in: $line";
+      exit($error);
+   }
    $val1 = substr($str,0,$pos);
    $val2 = substr($str,$pos+1);
    $val1 = (int)$val1;
@@ -15,9 +19,13 @@ $read = file('input.txt');
 // 1. Put the lines in an associative array
 foreach ($read as $line) {
    $pos = strpos($line, ';');
+   if (!$pos) {
+      $error = "; is missing in: $line";
+      exit($error);
+   }
    $key = substr($line, 0, $pos);
    $value = substr($line, $pos+1);
-   $value = getAvgVal($value);
+   $value = getAvgVal($value, $line);
    $elem[$key] = $value;
  }
 
