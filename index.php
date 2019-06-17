@@ -4,7 +4,7 @@ $read = file('input.txt');
 
 // 1. Put the lines in an associative array
 foreach ($read as $line) {
-   $pos = strpos($line, ',');
+   $pos = strpos($line, ';');
    $key = substr($line, 0, $pos);
    $value = substr($line, $pos+1);
    $elem[$key] = $value;
