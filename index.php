@@ -7,8 +7,6 @@ foreach ($read as $line) {
    $pos = strpos($line, ';');
    $key = substr($line, 0, $pos);
    $value = substr($line, $pos+1);
-   // remove spaces
-   $value = str_replace(' ', '', $value);
    // explicitly convert to value
    $value = (int)$value;
    $elem[$key] = $value;
