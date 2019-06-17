@@ -11,4 +11,6 @@ foreach ($read as $line) {
  }
 
 // 2. Sort the array on the values
+arsort($elem);
+
 // 3. Put the sorted array in a new file called 'output.txt'
