@@ -28,3 +28,15 @@ The case
       	Jan de Groot; 7	
       	Pietje Puk; 10
 
+___________________________________________________________________________
+Step 2:
+
+Example input.txt:
+
+Pietje Puk; 5-7
+Jan Klaassen; 9-13
+Jan de Groot; 1-7
+
+Sort the list in ascending order for the average value in second column.
+For example: first row 5-7: (5+7)/2 = 6 etc...
+
