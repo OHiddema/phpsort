@@ -14,3 +14,9 @@ foreach ($read as $line) {
 arsort($elem);
 
 // 3. Put the sorted array in a new file called 'output.txt'
+$myfile = fopen("output.txt", "w");
+foreach ($elem as $key=>$value) {
+   $txt = $key.','.$value;
+   fwrite($myfile,$txt);
+}
+fclose($myfile);
