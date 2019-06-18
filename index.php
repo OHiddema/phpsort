@@ -3,7 +3,7 @@
 function getAvgVal($str, $line) {
    $pos = strpos($str,'-');
    if (!$pos) {
-      die ("- is missing in: $line<br>No output file generated");
+      die ("- is missing in: " . htmlspecialchars($line) . "<br>No output file generated");
    }
    $val1 = substr($str,0,$pos);
    $val2 = substr($str,$pos+1);
@@ -25,7 +25,7 @@ if(!file_exists($inputfile)) {
 foreach ($read as $line) {
    $pos = strpos($line, ';');
    if (!$pos) {
-      die("; is missing in: $line.<br>No output file generated.");
+      die("; is missing in: " . htmlspecialchars($line) . "<br>No output file generated.");
    }
    $key = substr($line, 0, $pos);
    $value = substr($line, $pos+1);
