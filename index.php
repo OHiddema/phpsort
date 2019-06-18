@@ -1,9 +1,10 @@
 <?php
 
-function getAvgVal($str, $line) {
+function getAvgVal($str, $line_num, $line) {
    $pos = strpos($str,'-');
    if (!$pos) {
-      die ("- is missing in: " . htmlspecialchars($line) . "<br>No output file generated");
+      $num1 = $line_num + 1; //start counting lines at 1
+      die ("- is missing in line $num1: " . htmlspecialchars($line) . "<br>No output file generated");
    }
    $val1 = substr($str,0,$pos);
    $val2 = substr($str,$pos+1);
@@ -22,14 +23,15 @@ if(!file_exists($inputfile)) {
  }
 
 // 1. Put the lines in an associative array
-foreach ($read as $line) {
+foreach ($read as $line_num => $line) {
    $pos = strpos($line, ';');
    if (!$pos) {
-      die("; is missing in: " . htmlspecialchars($line) . "<br>No output file generated.");
+      $num1 = $line_num + 1; //start counting lines at 1
+      die("; is missing in line $num1: " . htmlspecialchars($line) . "<br>No output file generated.");
    }
    $key = substr($line, 0, $pos);
    $value = substr($line, $pos+1);
-   $value = getAvgVal($value, $line);
+   $value = getAvgVal($value, $line_num, $line);
    $elem[$key] = $value;
  }
 
