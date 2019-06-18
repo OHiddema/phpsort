@@ -13,11 +13,12 @@ function getAvgVal($str, $line) {
 };
 
 //read input file into an array, each element corresponds to a line
+//empty lines are skipped (don't return an error)
 $inputfile = "input.txt";
 if(!file_exists($inputfile)) {
    die("File $inputfile not found.<br>No output file generated.");
  } else {
-   $read = file($inputfile);
+   $read = file($inputfile, FILE_SKIP_EMPTY_LINES | FILE_IGNORE_NEW_LINES);
  }
 
 // 1. Put the lines in an associative array
