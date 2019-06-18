@@ -3,7 +3,7 @@
 function getAvgVal($str, $line) {
    $pos = strpos($str,'-');
    if (!$pos) {
-      $error = "- is missing in: $line";
+      $error = "- is missing in: $line<br>No output file generated";
       errorMessage($error);
    }
    $val1 = substr($str,0,$pos);
@@ -18,8 +18,13 @@ function errorMessage($error) {
    exit;
 }
 
-//read file into an array, each element corresponds to a line
-$read = file('input.txt');
+//read input file into an array, each element corresponds to a line
+$inputfile = "input.txt";
+if(!file_exists($inputfile)) {
+   die("File $inputfile not found.<br>No output file generated.");
+ } else {
+   $read = file($inputfile);
+ }
 
 // 1. Put the lines in an associative array
 foreach ($read as $line) {
