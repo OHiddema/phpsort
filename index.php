@@ -8,8 +8,12 @@ function getAvgVal($str, $line_num, $line) {
    }
    $val1 = substr($str,0,$pos);
    $val2 = substr($str,$pos+1);
-   $val1 = (int)$val1;
-   $val2 = (int)$val2;
+   $val1 = str_replace(' ', '', $val1);
+   $val2 = str_replace(' ', '', $val2);
+   if (!is_numeric($val1) or !is_numeric($val2)) {
+      $num1 = $line_num + 1;
+      die ("Line number $num1 does not contain two valid numbers");
+   }
    return ($val1+$val2)/2;
 };
 
